@@ -128,7 +128,7 @@ st.sidebar.info(
 var_explained = float(cumvar[n_components - 1]) * 100
 var_remaining = 100 - var_explained
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Components selected", f"{n_components}", f"of {X_scaled.shape[1]}"
+col1.metric("Components selected", f"{n_components}", f"of {X_scaled.shape[1]}")
 col2.metric("Variance explained", f"{var_explained:.2f}%")
 col3.metric("Variance discarded", f"{var_remaining:.2f}%")
 col4.metric("Compression ratio", f"{784 / n_components:.1f}×")
