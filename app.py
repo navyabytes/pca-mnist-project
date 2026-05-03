@@ -78,8 +78,8 @@ def fit_full_pca(_X_scaled):
 # ------------------------------------------------------------------ #
 st.title("🔢 PCA Explorer — MNIST Handwritten Digits")
 st.markdown(
-    "Interactively explore **Principal Component Analysis** on 70,000 digit images "
-    "(784 features each). Adjust the slider to see how dimensionality affects "
+    "Interactively explore **Principal Component Analysis** on 1,797 digit images "
+    "(64 features each). Adjust the slider to see how dimensionality affects "
     "reconstruction quality and explained variance in real time."
 )
 
@@ -128,7 +128,7 @@ st.sidebar.info(
 var_explained = float(cumvar[n_components - 1]) * 100
 var_remaining = 100 - var_explained
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Components selected", f"{n_components}", f"of 784")
+col1.metric("Components selected", f"{n_components}", f"of {X_scaled.shape[1]}"
 col2.metric("Variance explained", f"{var_explained:.2f}%")
 col3.metric("Variance discarded", f"{var_remaining:.2f}%")
 col4.metric("Compression ratio", f"{784 / n_components:.1f}×")
@@ -245,11 +245,12 @@ st.caption(
 # ------------------------------------------------------------------ #
 st.markdown("---")
 st.subheader("Individual Explained Variance (first 100 components)")
-evr = pca_full.explained_variance_ratio_[:100] * 100
+evr = pca_full.explained_variance_ratio_ * 100
+n = len(evr)
 
 fig3, ax3 = plt.subplots(figsize=(10, 2.8))
-colors = ["#ef5350" if i < n_components else "#37474f" for i in range(100)]
-ax3.bar(range(1, 101), evr, color=colors, width=0.8)
+colors = ["#ef5350" if i < n_components else "#37474f" for i in range(n)]
+ax3.bar(range(1, n + 1), evr, color=colors, width=0.8)
 ax3.set_xlabel("Component index", color="#ccc", fontsize=9)
 ax3.set_ylabel("% Variance", color="#ccc", fontsize=9)
 ax3.set_facecolor("#0d1117")
