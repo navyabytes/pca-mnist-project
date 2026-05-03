@@ -11,7 +11,7 @@ Run
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-from sklearn.datasets import fetch_openml
+from sklearn.datasets import load_digits
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
@@ -52,13 +52,17 @@ st.markdown(
 # ------------------------------------------------------------------ #
 # Data loading (cached)                                               #
 # ------------------------------------------------------------------ #
-@st.cache_data(show_spinner="Loading MNIST …")
+@st.cache_data(show_spinner="Loading dataset …")
 def load_data():
-    mnist = fetch_openml("mnist_784", version=1, as_frame=False, parser="auto")
-    X = mnist.data.astype(np.float32)
-    y = mnist.target.astype(int)
+    from sklearn.datasets import load_digits
+
+    digits = load_digits()
+    X = digits.data.astype(np.float32)
+    y = digits.target.astype(int)
+
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
+
     return X, X_scaled, y, scaler
 
 
