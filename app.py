@@ -99,7 +99,7 @@ st.sidebar.header("⚙️ Controls")
 
 n_components = st.sidebar.slider(
     "Number of PCA Components (k)",
-    min_value=1, max_value=200, value=50, step=1,
+    min_value=1, max_value=X_scaled.shape[1], value=30, step=1,
 )
 
 digit_filter = st.sidebar.multiselect(
