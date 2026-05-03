@@ -216,7 +216,7 @@ cols_rec  = st.columns(n_recon_samples)
 for i in range(n_recon_samples):
     with cols_orig[i]:
         fig_o, ax_o = plt.subplots(figsize=(1.5, 1.5))
-        ax_o.imshow(X_sample_raw[i].reshape(28, 28), cmap="gray")
+        ax_o.imshow(X_sample_raw[i].reshape(8, 8), cmap="gray")
         ax_o.axis("off")
         if i == 0:
             ax_o.set_title("Original", fontsize=7, color="#ccc")
@@ -226,7 +226,7 @@ for i in range(n_recon_samples):
 
     with cols_rec[i]:
         fig_r, ax_r = plt.subplots(figsize=(1.5, 1.5))
-        ax_r.imshow(X_rec[i].reshape(28, 28), cmap="gray")
+        ax_r.imshow(X_rec[i].reshape(8, 8), cmap="gray")
         ax_r.axis("off")
         if i == 0:
             ax_r.set_title("Reconstructed", fontsize=7, color="#ccc")
