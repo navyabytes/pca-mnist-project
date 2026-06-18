@@ -174,7 +174,7 @@ with right:
     X_2d = pca2.transform(X_filt)
 
     fig2, ax2 = plt.subplots(figsize=(5.5, 4))
-    cmap = plt.cm.get_cmap("tab10", 10)
+    cmap = plt.get_cmap("tab10")
     sc = ax2.scatter(X_2d[:, 0], X_2d[:, 1], c=y_filt, cmap=cmap,
                      alpha=0.4, s=5, linewidths=0)
     cbar = fig2.colorbar(sc, ax=ax2, ticks=sorted(digit_filter))
