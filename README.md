@@ -147,7 +147,7 @@ Open `http://localhost:8501` in your browser.
 - **Hyperparameter sweep** — Grid-search optimal k (components) jointly with classifier C for best accuracy/compute trade-off.
 - **FAISS-accelerated KNN** — Replace sklearn KNN with FAISS for sub-millisecond inference at scale.
 
----
+------
 
 ## 📄 License
 
